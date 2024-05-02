@@ -1,8 +1,7 @@
 def BiggieSize(list):
-    for i in range (0,len(list)):
-        if list[i]>=0:
+    for i in range (len(list)):
+        if list[i]>0:
             list[i]="big"
-        else: list[i]=list[i]
     return list
 print(BiggieSize([-1, 3, 5, -5]))
 print(BiggieSize([-1, 11, 3, 5, -5 ,-2]))
@@ -11,10 +10,9 @@ print("*************************************")
 
 def CountPositives(list):
     count=0
-    for i in range (0,len(list)):
+    for i in range (len(list)):
         if list[i]>0:
             count+=1
-        else: pass
     list[len(list)-1]=count
     return list
 print(CountPositives([-1,1,1,1]))
