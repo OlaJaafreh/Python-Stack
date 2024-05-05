@@ -10,7 +10,7 @@ class BankAccount:
     def withdraw(self, amount):
         if self.balance < amount:
             print(f"No cridit left ----> Your Balance is: {self.balance}")
-        return self 
+            return self 
         self.balance -= amount
         return self 
 
@@ -25,25 +25,45 @@ class BankAccount:
         return self 
         
 class User:
-    def __init__(self, name ,account=None):
+    def __init__(self, name, accounts=None):
         self.name = name
-        self.account = account#List
+        self.accounts = accounts if accounts else {}  
 
-    def UserAccount(self,accountNum ,balance=0):
-        self.account[accountNum] = BankAccount(balance)
+
+    def UserAccount(self,accountNum):
+        self.accounts[accountNum] = BankAccount()
 
     def make_deposit(self, amount,accountNum):
-        self.account[accountNum].deposit(amount)
+        self.accounts[accountNum].deposit(amount)
 
     def make_withdrawal(self, amount,accountNum):
-        self.account[accountNum].withdraw(amount)
+        self.accounts[accountNum].withdraw(amount)
 
-
-    def display_user_balance(self):
-        print(f"User:{self.name} Balance:{self.account[accountNum].balance}")
+    def display_user_balance(self,accountNum):
+        print(f"User:{self.name} Balance:{self.accounts[accountNum].balance}")
 
 user1 = User("Ola")
-user1.UserAccount(1,500)
+user1.UserAccount(1)
+user1.UserAccount(2)
+user1.display_user_balance(1)
+user1.display_user_balance(2)
+user1.make_deposit(1000,1)
 
+user1.display_user_balance(1)
+user1.make_deposit(5000,2)
+
+user1.display_user_balance(2)
+
+user1.make_withdrawal(50,1)
+user1.display_user_balance(1)
+
+user1.make_withdrawal(500,2)
+user1.display_user_balance(2)
+
+user1.accounts[1].yield_interest()
+user1.display_user_balance(1)
+
+user1.accounts[2].yield_interest()
+user1.display_user_balance(2)
 
         
