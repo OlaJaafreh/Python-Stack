@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    {%for Row in range(0,Rows,2):%}
+    <div class="main1">
+        {%for num in range(0,Col,2):%}
+        <div class="whitee" style="background-color: {{color[0]}};">.</div>
+        <div class="blackk" style="background-color: {{color[1]}};">.</div>
+        {%endfor%}
+    </div>
+
+    <div class="main2"> 
+        {%for num in range(0,Col,2):%}
+        <div class="blackk" style="background-color: {{color[1]}};">.</div>
+        <div class="whitee" style="background-color: {{color[0]}};">.</div>
+        {%endfor%}
+    </div>
+    {%endfor%}
+</body>
+</html>
