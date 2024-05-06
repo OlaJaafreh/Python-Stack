@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    {%if Rows%2==0%}
     {%for Row in range(0,Rows,2):%}
     <div class="main1">
         {%for num in range(0,Col,2):%}
@@ -22,5 +23,65 @@
         {%endfor%}
     </div>
     {%endfor%}
+    {%endif%}
+
+
+    {%if Rows%2!=0%}
+    {%for Row in range(0,Rows-1,2):%}
+    
+    <div class="main1">
+        {%if Col%2!=0%}
+        {%for num in range(0,Col-1,2):%}
+        <div class="whitee" style="background-color: {{color[0]}};">.</div>
+        <div class="blackk" style="background-color: {{color[1]}};">.</div>
+        {%endfor%}
+        <div class="whitee" style="background-color: {{color[0]}};">.</div>
+        {%endif%}
+        {%if Col%2==0%}
+        {%for num in range(0,Col,2):%}
+        <div class="whitee" style="background-color: {{color[0]}};">.</div>
+        <div class="blackk" style="background-color: {{color[1]}};">.</div>
+        {%endfor%}
+        {%endif%}
+    </div>
+
+    <div class="main2"> 
+        {%if Col%2!=0%}
+        {%for num in range(0,Col-1,2):%}
+        <div class="whitee" style="background-color: {{color[1]}};">.</div>
+        <div class="blackk" style="background-color: {{color[0]}};">.</div>
+        {%endfor%}
+        <div class="whitee" style="background-color: {{color[1]}};">.</div>
+        {%endif%}
+
+        {%if Col%2==0%}
+        {%for num in range(0,Col,2):%}
+        <div class="whitee" style="background-color: {{color[0]}};">.</div>
+        <div class="blackk" style="background-color: {{color[1]}};">.</div>
+        {%endfor%}
+        {%endif%}
+
+    </div>
+    {%endfor%}
+
+    <div class="main1">
+        {%if Col%2!=0%}
+        {%for num in range(0,Col-1,2):%}
+        <div class="blackk" style="background-color: {{color[0]}};">.</div>
+        <div class="whitee" style="background-color: {{color[1]}};">.</div>
+        {%endfor%}
+        <div class="blackk" style="background-color: {{color[0]}};">.</div>
+        {%endif%}
+
+        {%if Col%2==0%}
+        {%for num in range(0,Col,2):%}
+        <div class="blackk" style="background-color: {{color[1]}};">.</div>
+        <div class="whitee" style="background-color: {{color[0]}};">.</div>
+        {%endfor%}
+        {%endif%}
+    </div>
+
+    {%endif%}
+
 </body>
 </html>
