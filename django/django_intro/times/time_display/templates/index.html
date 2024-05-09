@@ -1,13 +1,18 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Cute Time Display</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-    <h3>the current time an date is:</h3>
-    <div style="font-size: 110px; color: black;"> <h1>{{time}} </h1> </div>
-    <div style="font-size: 110px; color: black;"> <h1>{{date}} </h1> </div>
+    <div class="mmm">
+        <!-- <h3>The current time and date is:</h3> -->
+        <h1 id="current-time">Time: {{time}}</h1><br>
+        <div><h1>Date: {{date}}</h1></div>
+    </div>
+    <script src="{% static 'script.js' %}"></script> 
 </body>
 </html>
