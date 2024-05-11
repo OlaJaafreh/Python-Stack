@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css')}}">
+
+</head>
+<body>
+    <div class="box">
+        <h1>Visit: {{counterr}}</h1>
+    </div>
+    <div class="box">
+        <h1>Counter: {{count}}</h1>
+    </div>
+
+    <form action="/IncBy2" method="post">
+        <button>+2</button>
+    </form>
+
+    <form action="/Reset" method="post">
+        <button>Reset</button>
+    </form>
+
+    <form action="/IncByUser" method="post">
+        <button>+{{num}}</button>
+        <input type="text" name="Enter" value="0">
+    </form>
+
+    <a href="/destroy_session">Destroy</a>
+
+    
+</body>
+</html>
