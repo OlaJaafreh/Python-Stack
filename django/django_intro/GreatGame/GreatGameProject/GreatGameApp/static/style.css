@@ -1,0 +1,39 @@
+
+body {
+    font-family: cursive;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f7f7;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.guessSection{
+    border: solid black 2px;
+}
+
+.GuessTheNum{
+    border: solid black 2px;
+    box-shadow: 2px 2px 2px black;
+}
+
+.GreenBox{
+    background-color: rgb(77, 218, 101);
+    width: 120px;
+    height: 120px;
+    padding: 10px;
+    position: absolute;
+    left: 43%;
+}
+
+.redBox{
+    background-color: rgb(202, 27, 27);
+    color: white;
+    text-align: center;
+    width: 120px;
+    height: 50px;
+    padding: 30px 10px 10px 10px;
+    position: absolute;
+    left: 43%;
+}
