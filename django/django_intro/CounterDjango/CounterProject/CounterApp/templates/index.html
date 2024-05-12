@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">    
+</head>
+<body>
+    <div class="box">
+        <h1>Visit: {{request.session.counterr}}</h1>
+    </div>
+    <div class="box">
+        <h1>Counter: {{request.session.count}}</h1>
+    </div>
+
+    <form action="/IncBy2" method="post">
+        {% csrf_token %}
+        <button>+2</button>
+    </form>
+
+    <form action="/Reset" method="post">
+        {% csrf_token %}
+        <button>Reset</button>
+    </form>
+
+    <form action="/IncByUser" method="post">
+        {% csrf_token %}
+        <button>+{{request.session.num}}</button>
+        <input type="text" name="Enter" value="0">
+    </form>
+
+    <a href="/destroy_session">Destroy</a>
+
+    
+</body>
+</html>
