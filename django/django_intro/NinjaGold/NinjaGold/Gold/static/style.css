@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: cursive;
+
+}
+
+body{
+    width: 1200px;
+}
+
+.farm{
+    border: 2px solid black;
+    padding: 20px;
+    line-height: 50px;
+    width: 220px;
+    text-align: center;
+    
+}
+
+.Cave{
+    border: 2px solid black;
+    padding: 20px;
+    line-height: 50px;
+    width: 220px;
+    text-align: center;
+}
+
+.House{
+    border: 2px solid black;
+    padding: 20px;
+    line-height: 50px;
+    width: 220px;
+    text-align: center;
+}
+
+.Quest{
+    border: 2px solid black;
+    padding: 20px;
+    line-height: 50px;
+    width: 220px;
+    text-align: center;
+}
+
+.sqGold{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+
+
+.First{
+    padding: 20px;
+}
+
+.textForYourGold{
+    border: 2px solid black;
+    width: 80px;
+}
+
+.tail{
+    height: 100px;
+    width: 100%;
+    padding: 20px 50px 20px 20px;
+}
+
+textarea{
+    height: 150px;
+    width: 96%;
+    border: 2px solid;
+    margin-top: 10px;
+    overflow: scroll;
+
+}
+
+#textForYourGold{
+    height: 20px;
+    width: 100px;
+    overflow: hidden;
+}

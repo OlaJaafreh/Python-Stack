@@ -1,0 +1,187 @@
+  501  source py3_dajngo/Scripts/activate
+  502  cd ..
+  503  cd Python_stack
+  504  cd django/
+  505  cd django_intro/
+  506  mkdir DojoNinja
+  507  cd DojoNinja/
+  508  django-admin startproject DojoNinja
+  509  cd DojoNinja/
+  510  python manage.py runserver
+  511  python manage.py startapp DG_app
+  512  code .
+  513  python manage.py runserver
+  518  python manage.py makemigrations
+  519  python manage.py migrate
+	py manage.py shell
+	from DG_app.models import *
+
+
+Dojo.objects.create(name="Ola",city="Jerusalem",state="p")
+Dojo.objects.create(name="laith",city="qaliqila",state="p")
+Dojo.objects.create(name="mohammed",city="ramallah",state="p")
+
+Ob_del=Dojo.objects.get(id=1)
+Ob_del.delete()
+Ob_del=Dojo.objects.get(id=2)
+Ob_del.delete()
+Ob_del=Dojo.objects.get(id=3)
+Ob_del.delete()
+
+Dojo.objects.create(name="Ola",city="Jerusalem",state="p")
+Dojo.objects.create(name="laith",city="qaliqila",state="p")
+Dojo.objects.create(name="mohammed",city="ramallah",state="p")
+
+>>> my_Ninja= Ninja.objects.create(first_name="jOla", dojo=Dojo.objects.get(id=4))
+>>> my_Ninja= Ninja.objects.create(first_name="jlaith", dojo=Dojo.objects.get(id=5))
+>>> my_Ninja= Ninja.objects.create(first_name="jmohaammad", dojo=Dojo.objects.get(id=6))
+>>> my_Ninja= Ninja.objects.create(first_name="jOla2", dojo=Dojo.objects.get(id=4))
+>>> my_Ninja= Ninja.objects.create(first_name="jlaith2", dojo=Dojo.objects.get(id=5))
+>>> my_Ninja= Ninja.objects.create(first_name="jmohaammad2", dojo=Dojo.objects.get(id=6))
+>>> my_Ninja= Ninja.objects.create(first_name="jOla3", dojo=Dojo.objects.get(id=4))
+>>> my_Ninja= Ninja.objects.create(first_name="jlaith3", dojo=Dojo.objects.get(id=5))
+>>> my_Ninja= Ninja.objects.create(first_name="jmohaammad3", dojo=Dojo.objects.get(id=6))
+>>> Ninja.objects.all()
+<QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (2)>, <Ninja: Ninja object (3)>, <Ninja: Ninja object (4)>, <Ninja: Ninja object (5)>, <Ninja: Ninja object (6)>, <Ninja: Ninja object (7)>, <Ninja: Ninja object (8)>, <Ninja: Ninja object (9)>]>
+
+
+>>> Dojo1=Dojo.objects.get(id=4)
+>>> Dojo1.Ninja.all()
+<QuerySet [<Ninja: Ninja object (1)>, <Ninja: Ninja object (4)>, <Ninja: Ninja object (7)>]>
+>>> Dojo1=Dojo.objects.get(id=6)
+>>> Dojo1.Ninja.all()
+<QuerySet [<Ninja: Ninja object (3)>, <Ninja: Ninja object (6)>, <Ninja: Ninja object (9)>]>
+>>> lastNinja=Ninja.objects.get(id=9)
+>>> lastNinja.dojo
+<Dojo: Dojo object (6)>
+>>> exit()
+
+
+(djangoPy3Env) D:\Full Stack Developer\Python_stack\django\django_intro\DojoNinja\DojoNinja>py manage.py makemigrations DG_app
+No changes detected in app 'DG_app'
+
+(djangoPy3Env) D:\Full Stack Developer\Python_stack\django\django_intro\DojoNinja\DojoNinja>py manage.py migrate
+Operations to perform:
+  Apply all migrations: DG_app, admin, auth, contenttypes, sessions
+Running migrations:
+  No migrations to apply.
+
+(djangoPy3Env) D:\Full Stack Developer\Python_stack\django\django_intro\DojoNinja\DojoNinja>py manage.py shell
+Python 3.12.2 (tags/v3.12.2:6abddd9, Feb  6 2024, 21:26:36) [MSC v.1937 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> desc = models.TextField(default="oladojo")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'models' is not defined
+>>> desc = Dojo.TextField(default="")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Dojo' is not defined
+>>> desc = Dojo.models.TextField(default="")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Dojo' is not defined
+>>> desc = Dojo.model.TextField(default="")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Dojo' is not defined
+>>> desc = models.TextField(default="old dojo")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'models' is not defined
+>>> desc = Dojo.TextField(default="old dojo")
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+NameError: name 'Dojo' is not defined
+>>> exit()
+
+(djangoPy3Env) D:\Full Stack Developer\Python_stack\django\django_intro\DojoNinja\DojoNinja>py manage.py makemigrations DG_app
+
+(djangoPy3Env) D:\Full Stack Developer\Python_stack\django\django_intro\DojoNinja\DojoNinja>py manage.py migrate
+
+(djangoPy3Env) D:\Full Stack Developer\Python_stack\django\django_intro\DojoNinja\DojoNinja>py manage.py shell
+>>> from DG_app.models import *
+>>> Dojo.objects.create(name="laith",city="qaliqila",state="p",desc="new dojo")
+<Dojo: Dojo object (7)>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

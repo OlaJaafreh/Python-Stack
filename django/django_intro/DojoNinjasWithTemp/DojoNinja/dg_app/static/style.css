@@ -1,0 +1,88 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 10px;
+    width: 800px;
+    height: 1000px;
+    align-items: center;
+    /* border: 1px solid; */
+    margin: 0 auto;
+}
+
+.Line{
+    margin-left: 120px;
+}
+
+
+.above {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    justify-content: space-between;
+    
+    
+    
+}
+
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input,
+select,
+button {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #78828d;
+    color: white;
+    cursor: pointer;
+}
+
+
+
+.DBoutput {
+    background-color: white;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-align: center;
+    width: 40%;
+    margin: 0 auto;
+}
+
+.DBoutput p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 5px;
+}

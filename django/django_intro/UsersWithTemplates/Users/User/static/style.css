@@ -1,0 +1,42 @@
+label {
+    display: block;
+    min-width: 100px;
+    height: fit-content;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+input {
+    border: 2px solid;
+    height: auto; /* Match label height */
+    margin: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    border: 1px solid black;
+    color: black;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px black;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.container {
+    height: 200px; 
+    overflow-y: auto;
+    border: 1px solid black; 
+}
+
+strong{
+    margin-top: 20px;
+}
+
+body{
+    border: 2px solid black;
+    width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+

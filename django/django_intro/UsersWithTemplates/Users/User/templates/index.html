@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">  
+</head>
+<body>
+
+    <form action="{% url 'index' %}" method="post">
+        {% csrf_token %}
+
+        <h2  style="text-align: center;">All The Users</h2>
+
+        <div class="container">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Age</th>
+                </tr>
+              </thead>
+              <tbody style="height: 10px !important; overflow: scroll; ">
+                      {% for user in users %}
+              <tr>
+                  <td>{{ user.id }}</td>
+                  <td>{{ user.first_name }} {{ user.last_name }}</td>
+                  <td>{{ user.email }}</td>
+                  <td>{{ user.age }}</td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+          <div>
+            <strong style="display: flex; justify-content: center; align-items: center;">-----------------------------------------------------------------------------------------------------------------------------------------------------------------</strong>
+          </div>
+
+          <h2  style="text-align: center;">Add Users</h2>
+
+          <div style="display: flex; justify-content: center; align-items: center;">
+            
+                <label for="">First Name</label>
+                <input type="text" style="border: 2px solid;" name="first" id=""></input>
+        
+                <label for="">Last Name</label>
+                <input type="text" style="border: 2px solid;" name="last" id=""></input>
+          
+          </div>
+
+          <div style="display: flex; justify-content: center; align-items: center;">
+            
+                <label for="">Email</label>
+                <input type="email" style="border: 2px solid;" name="email" id=""></input>
+        
+                <label for="">Age</label>
+                <input type="number" style="border: 2px solid; width: 178px;" name="age" id="" min="0" max="90"></input>
+          
+          </div>
+
+          <div style="display: flex; justify-content: center;">
+            <button type="submit">Add</button>
+          </div>
+        
+        
+
+    </form>
+</body>
+</html>

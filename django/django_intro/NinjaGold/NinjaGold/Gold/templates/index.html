@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Gold</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <form method="post" action="/yourgold">
+        {% csrf_token %}
+        <div>
+            <label for="YourGold">Your Gold:</label>
+            <span id="YourGold">{{ Yourgold }}</span>
+        </div>
+        
+        <div class="sqGold">
+            <div class="farm">
+                <h1>Farm</h1>
+                <h3>(earns 10-20 gold)</h3>
+                <button type="submit" name="FCHQ" value="farm">Find Gold!</button>
+            </div>
+
+            <div class="Cave">
+                <h1>Cave</h1>
+                <h3>(earns 10-20 gold)</h3>
+                <button type="submit" name="FCHQ" value="cave">Find Gold!</button>
+            </div>
+
+            <div class="House">
+                <h1>House</h1>
+                <h3>(earns 10-20 gold)</h3>
+                <button type="submit" name="FCHQ" value="house">Find Gold!</button>
+            </div>
+
+            <div class="Quest">
+                <h1>Quest</h1>
+                <h3>(earns/takes 0-50 gold)</h3>
+                <button type="submit" name="FCHQ" value="quest">Find Gold!</button>
+            </div>
+        </div>
+    </form>
+
+    <div class="tail">
+        <label for="ActivitiesTextArea">Activities</label> <br>
+        
+        <textarea id="ActivitiesTextArea" readonly>
+            {% for activity in activities %}
+            {{ activity }}
+            {% endfor %}
+        </textarea>
+        
+    </div>
+</body>
+</html>
