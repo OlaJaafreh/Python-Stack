@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authors</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    {% load static %}
+      <link rel="stylesheet" href="{% static 'style.css' %}">  
+
+</head>
+<body>
+  <div class="bookdiv">
+    <div class="autherdiv">
+    <form action="/newauthor" method="post">
+      {% csrf_token %}
+    <h1>Add an Author</h1>
+
+    <table>
+      <tbody>
+      <tr>
+          <td><label for="">First Name</label></td>
+          <td><input class="lab" type="text" name="first_name"></td>
+      </tr>
+      <tr>
+        <td><label for="">Last Name</label></td>
+        <td><input class="lab" type="text" name="last_name"></td>
+    </tr>
+    <tr>
+      <td><label for="">Notes</label></td>
+      <td><textarea  class="descnote" type="text" name="notes"></textarea></td>
+  </tr>
+      </tbody>
+    </table>
+
+
+    <button class="bookadd">Add</button>
+  </div>
+    <div class="container">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody style="height: 10px !important; overflow: scroll; ">
+                  {% for author in authors %}
+          <tr>
+              <td>{{ author.id }}</td>
+              <td>{{ author.first_name }} {{ author.last_name }}</td>
+              <td><a href="author/{{author.id}}">View</a></td>
+          </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+    
+
+  </div>
+</form>
+
+</body>
+</html>
