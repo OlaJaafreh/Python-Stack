@@ -34,7 +34,6 @@ def process_money(request):
 
         # activity = f'Earned {gold_earned} gold from the {FCHQ}!'
         request.session['activities'].append(activity)
-        request.session.modified = True
     return redirect('/')
 
 def deleteed(request):
