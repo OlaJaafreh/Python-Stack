@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie app</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">    
+
+
+</head>
+<body>
+    <div class="container">
+        <h1>Movies</h1>
+        <div class="movieSection">
+            {% for movie in movies %}
+                <div class="movieSec">
+                    <img src="{{movie.url_img}}" alt="{{movie.title}}">
+                    <div class="info">
+                        <h5>{{ movie.title }}</h5>
+                        <p><strong>Category:</strong> {{ movie.cat.name }}</p>
+                        <p><strong>Description:</strong> {{ movie.description }}</p>
+                        <p><strong>Actors:</strong> 
+                            <ul >
+                                {% for actor in movie.act.all %}
+                                {% for i in actors.all %}
+                                {%if actor == i %}
+                                    <li>{{ actor.name }}: Acted in {{ i.movie_count }} movies</li>
+                                {% endif %}
+                                {% endfor %}
+                                {% endfor %}
+                            </ul>
+                        </p>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>

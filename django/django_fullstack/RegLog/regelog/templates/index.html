@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+      <link rel="stylesheet" href="{% static 'style.css' %}">    
+      
+    <!-- <link rel="stylesheet" href="/regelog/static/style.css"> -->
+</head>
+<body>
+
+    <div class="container">
+
+    <form action="create" method="POST">
+        {% csrf_token %}
+<h1 class="reg">Registration</h1>
+
+<table>
+
+    <tbody >
+    <tr>
+        <td><label for="">First Name</label></td>
+        <td><input type="text" name="first_name"> </td>
+    </tr>
+    <tr>
+      <td><label for="">Last Name</label></td>
+      <td><input type="text" name="last_name"></td>
+    </tr>
+    <tr>
+        <td><label for="">Email</label></td>
+        <td><input type="email" name="email"></td>
+      </tr>
+    <tr>
+      <td><label for="">Password</label></td>
+      <td><input type="password" name="password"></td>
+    </tr>
+    <tr>
+      <td><label for="">Confirm PW</label></td>
+      <td><input type="password" name="Confirmpassword"></td>
+    </tr>
+    </tbody>
+
+</table>
+
+<button>Register</button>
+</form>
+
+<form action="login" method="POST">
+    {% csrf_token %}
+<h1>Login</h1>
+
+<table>
+
+    <tbody >
+    <tr>
+        <td><label for="">Email</label></td>
+        <td><input type="text" name="emailLog"></td>
+      </tr>
+    <tr>
+      <td><label for="">Password</label></td>
+      <td><input type="password" name="pass"></td>
+    </tr>
+    </tbody>
+
+</table>
+
+<button>Log In</button>
+
+</form>
+
+</div>
+
+{% if messages %}
+<ul class="messages">    
+    {% for message in messages %}    
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+    {% endfor %}
+</ul>
+{% endif %}
+
+</body>
+</html>

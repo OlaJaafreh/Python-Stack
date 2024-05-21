@@ -1,0 +1,100 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2759
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset178 GeezaPro;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh9000\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 >>> Book.objects.create(title="C Sharp", desc="C Sharp book")\
+<Book: Book object (1)>\
+>>> Book.objects.create(title="Java", desc="Java book")\
+<Book: Book object (2)>\
+>>> Book.objects.create(title="Python", desc="Python book")\
+<Book: Book object (3)>\
+>>> Book.objects.create(title="PHP", desc="PHP book")\
+<Book: Book object (4)>\
+>>> Book.objects.create(title="Ruby", desc="Ruby book")\
+<Book: Book object (5)>\
+>>> Author.objects.create(first_name="Jane\
+  File "<console>", line 1\
+    Author.objects.create(first_name="Jane\
+                                     ^\
+SyntaxError: unterminated string literal (detected at line 1)\
+>>> Author.objects.create(first_name="Jane", last_name="Austen")\
+<Author: Author object (1)>\
+>>> Author.objects.create(first_name="Emilly", last_name="Dickinson")\
+<Author: Author object (2)>\
+>>> Author.objects.create(first_name="Fyodor", last_name="Dostoevsky")\
+<Author: Author object (3)>\
+>>> Author.objects.create(first_name="William", last_name="Shakespeare")\
+<Author: Author object (4)>\
+>>> Author.objects.create(first_name="Lau", last_name="Tzu")\
+<Author: Author object (5)>\
+>>> ^D\
+now exiting InteractiveConsole...\
+(djangoPy3Env) teast@Raghads-Mac book_authors % python manage.py makemigrations\
+You are trying to add a non-nullable field 'notes' to author without a default; we can't do that (the database needs something to populate existing rows).\
+Please select a fix:\
+ 1) Provide a one-off default now (will be set on all existing rows with a null value for this column)\
+ 2) Quit, and let me add a default in models.py\
+Select an option: 1\
+Please enter the default value now, as valid Python\
+The datetime and django.utils.timezone modules are available, so you can do e.g. timezone.now\
+Type 'exit' to exit this prompt\
+>>> ""\
+Migrations for 'book_authors_app':\
+  book_authors_app/migrations/0003_author_notes.py\
+    - Add field notes to author\
+(djangoPy3Env) teast@Raghads-Mac book_authors % python manage.py migrate\
+Operations to perform:\
+  Apply all migrations: admin, auth, book_authors_app, contenttypes, sessions\
+Running migrations:\
+  Applying book_authors_app.0003_author_notes... OK\
+(djangoPy3Env) teast@Raghads-Mac book_authors % python manage.py shell\
+Python 3.12.2 (main, Feb  6 2024, 20:19:44) [Clang 15.0.0 (clang-1500.1.0.2.5)] on darwin\
+Type "help", "copyright", "credits" or "license" for more information.\
+(InteractiveConsole)\
+>>> from book_authors_app.models import *\
+>>> obj = Book.objects.get(title="C Sharp")\
+>>> obj.title = "C#"\
+>>> obj.save()\
+>>> Author.objects.get(id=4).first_name="Bill"\
+>>> Author.objects.get(id=4).save()\
+>>> obj = Author.objects.get(id=4)\
+>>> obj.first_name = "Bill"\
+>>> obj.save()\
+___________________________________\
+>>> book1 = Book.objects.get(id=1)\
+>>> book2 = Book.objects.get(id=2)\
+>>> author1 =\
+  File "<console>", line 1\
+    author1 =\
+SyntaxError: invalid syntax\
+>>> author1 = Author.objects.get(id=1)\
+>>> author1.books.add(book1, book2)\
+__________\
+>>> book3 = Book.objects.get(id=3)\
+>>> author2 = Author.objects.get(id=2)\
+>>> author2.books.add(book1, book2, book3)\
+__________\
+> author3 = Author.objects.get(id=3)\
+>>> book4 = Book.objects.get(id=4)\
+>>> author3.books.add(book1, book2, book3, book4)\
+___________\
+author4 = Author.objects.get(id=4)\
+bk = Book.objects.all()\
+>>> for i in bk:\
+...     author4.books.add(i)\
+_____________\
+>>> book3.Authors.all().values()\
+____________\
+>>> to_delete=book3.Authors.first()\
+>>> book3.Authors.remove(to_delete)\
+__________\
+>>> author5 = Author.objects.get(id=5)\
+>>> book2.Authors.add(author5)\
+__________\
+>>> author3.books.all().values("title")\
+_________\
+book5 = Book.objects.get(id=5)\
+>>> book5.Authors.all().values("first_name", "last_name")}
