@@ -10,7 +10,7 @@
 <body>
     <form method="post" action="/yourgold">
         {% csrf_token %}
-        <div>
+        <div class="earnGold">
             <label for="YourGold">Your Gold:</label>
             <span id="YourGold">{{ Yourgold }}</span>
         </div>
@@ -45,11 +45,11 @@
     <div class="tail">
         <label for="ActivitiesTextArea">Activities</label> <br>
         
-        <textarea id="ActivitiesTextArea" readonly>
+        <div id="ActivitiesTextArea" >
             {% for activity in activities %}
-            {{ activity }}
+            <p >{{ activity|safe }}</p>
             {% endfor %}
-        </textarea>
+        </div>
         
     </div>
 </body>

@@ -26,8 +26,15 @@ def process_money(request):
         FCHQ = request.POST.get('FCHQ')
         gold_earned = GoldTotal(FCHQ)
         request.session['Yourgold'] += gold_earned
-        activity = f'Earned {gold_earned} gold from the {FCHQ}!'
+
+        color = 'green' if gold_earned > 0 else 'red'
+        activity = f'<span style="color: {color};">Earned {gold_earned} gold from the {FCHQ}!</span>'
+
+
+
+        # activity = f'Earned {gold_earned} gold from the {FCHQ}!'
         request.session['activities'].append(activity)
+        request.session.modified = True
     return redirect('/')
 
 def deleteed(request):
