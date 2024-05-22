@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">  
+</head>
+<body>
+
+    <form action="/shows" method="post">
+        {% csrf_token %}
+
+        <h2 class="allshowheader">All Shows</h2>
+
+        <div class="container" id="tableallshow">
+            <table class="table">
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Network</th>
+                <th>Release Date</th>
+                <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for show in shows %}
+            <tr>
+                <td>{{ show.id }}</td>
+                <td>{{ show.title }} </td>
+                <td>{{ show.network }}</td>
+                <td>{{ show.releasedate }}</td>
+                <td><a href="/shows/{{ show.id }}">Show</a>|<a href="/shows/{{ show.id }}/edit">Edit</a>|<a href="/shows/{{ show.id }}/delete">Delete</a></td>
+            </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div>
+
+        
+    
+<a class="allshowfooter" href="/shows/new">Add a New Show</a>
+        
+        
+
+    </form>
+
+    
+</body>
+</html>
