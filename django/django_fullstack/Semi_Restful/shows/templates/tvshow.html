@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="/shows/{{show.id}}" method="POST">
+        {% csrf_token %}
+    <a href="/shows">Go Back</a>
+    <h1>TV Show {{show.id}}</h1>
+
+    <p>Title: {{show.title}}</p>
+
+    <p>Network: {{show.network}}</p>
+
+    <p>Release Date: {{show.releasedate}}</p>
+
+    <p>Description: {{show.description}}</p>
+
+    <p>Last Updated: {{show.update_date}}</p>
+
+
+
+    <a href="/shows/{{ show.id }}/edit">Edit</a>
+    <a href="/shows/{{ show.id }}/delete">Delete</a>
+
+    </form>
+</body>
+</html>
