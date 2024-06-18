@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+    <script src="{% static 'js/script.js' %}"></script>
+    
+</head>
+<body>
+    <h1>Add a new course</h1>
+    <form action="{% url 'addCourses' %}" method="POST">
+        {% csrf_token %}
+    <table>
+    <tr>
+        <td>Name: </td>
+        <td><input class="inputField" type="text" name="name"></td>
+    </tr>
+    <tr>
+        <td>Description: </td>
+        <td> <textarea class="inputField" name="description" id="inputFieldDes"></textarea></td>
+    </tr>
+    </table>
+    <button>Add</button>
+</form>
+    <h2>Courses</h2>
+    <table id="customers">
+        <tr>
+            <th>Course Name</th>
+            <th>Descrition</th>
+            <th>Date Added</th>
+            <th>Actions</th>
+          </tr>
+          {%for cour in course %}
+          <tr>
+            
+            <td>{{cour.name}}</td>
+            <td>{{cour.description}}</td>
+            <td>{{cour.date}}</td>
+            <td><a href="{% url 'delCourses' cour.id %}">Remove</a></td>
+            
+          </tr>
+          {%endfor%}
+    </table>
+
+
+    {% if messages %}
+<ul class="messages">    
+    {% for message in messages %}    
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+    {% endfor %}
+</ul>
+{% endif %}
+
+
+</body>
+</html>

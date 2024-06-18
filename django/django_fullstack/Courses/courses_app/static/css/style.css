@@ -1,0 +1,70 @@
+.inputField{
+    border: 2px black solid;
+}
+
+#inputFieldDes{
+    height: 80px;
+    width: 170px;
+    margin-top: 20px;
+}
+
+
+button{
+    background-color: green;
+    box-shadow: 2px 2px 2px;
+    margin-top: 10px;
+    margin-left: 220px;
+}
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 60%;
+    font-size: 12px;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #aaaaaa;
+    color: rgb(0, 0, 0);
+  }
+
+  .ConfirmButton{
+    margin-top: 20px;
+    display: flex;
+  }
+
+
+  #No{
+background-color: rgb(182, 182, 182);
+  }
+
+  #yes{
+    background-color: rgb(124, 33, 33);
+    color: white;
+  }
+
+  .Confirmtable{
+    width: 550px;
+    margin-left: 130px;
+  }
+
+  .Confirmtable td{
+    padding: 8px;
+    /* width: 5px; */
+  }
+
+  .are{
+    margin-left: 100px;
+  }

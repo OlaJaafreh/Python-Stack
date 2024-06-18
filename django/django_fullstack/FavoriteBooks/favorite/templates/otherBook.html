@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Welcome, {{first_name}}!</h1>
+    <a href="/">Log Out</a>
+
+    <h1>{{book.title}}</h1>
+    <h3>Added by: {{first_name}} {{last_name}}</h3>
+    <h3>Added on: {{created_at}}</h3>
+    <h3>Last Updated on: {{updated_at}}</h3>
+    <h3>Description: {{description}}</h3>
+
+    <h1>Users Who Like This Book</h1>
+    {%for user in book.user.all%}
+    <h3>{{first_name}} {{last_name}}</h3>
+    {%if not Favorite%}
+    <a href="#">Add to Favorites</a>
+    {%endif%}
+    {%endfor%}
+</body>
+</html>

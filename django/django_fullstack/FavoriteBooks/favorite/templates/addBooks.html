@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form action="books/add/{{user.id}}" method="POST">
+        {% csrf_token %}
+    <h1>Welcome, {{user.first_name}}!</h1>
+    <a href="/">Log Out</a>
+
+    <h1>Add a Favorite Book</h1>
+    <table>
+        <tbody>
+            <tr>
+                <td><label for="title">Title</label></td>
+                <td><input type="text" name="title"></td>
+            </tr>
+            <tr>
+                {% for message in messages %}
+                {% if 'title' in message.tags %}
+                <tr>
+                    <td></td>
+                    <td><span class="error">{{ message }}</span></td>
+                </tr>
+                <tr>
+                    {% endif %}
+                    {% endfor %}
+
+                <td><label for="desc">Description</label></td>
+                <td><input type="text" name="description"></td>
+            </tr>
+                {% for message in messages %}
+                {% if 'description' in message.tags %}
+                <tr>
+                    <td></td>
+                    <td><span class="error">{{ message }}</span></td>
+                </tr>
+                <tr>
+                    {% endif %}
+                    {% endfor %}
+        </tbody>
+    </table>
+
+    <button>Add</button>
+
+    <h1>All Books</h1>
+    {%for book in books%}
+    {%if book.user.id == user.id%}
+    <a href="books/{{user.id}}/{{book.id}}">{{book.title}}</a>
+    {%endif%}
+    {%if book.user.id != user.id%}
+    <a href="book/{{book.user.id}}">{{book.title}}</a>
+    {%endif%}
+    <h3>(added by {{user.first_name}} {{user.last_name}})</h3>
+    {%if user.favorite %}
+    <h3>this is one of your favorites</h3>
+    {%endif%}
+    {%if not user.favorite%}
+    <a href="#">Add to Favorite</a> <br>
+    {%endif%}
+    {%endfor%}
+</form>
+
+
+
+</body>
+</html>
