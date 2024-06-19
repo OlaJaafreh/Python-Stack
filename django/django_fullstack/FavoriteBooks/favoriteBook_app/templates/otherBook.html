@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Books</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style1.css' %}">
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome, {{user.first_name}}</h1>
+        <a href="{%url 'loginPage'%}">Logout</a>
+        
+    </div>
+    <a href="{%url 'books'%}">Main Page</a>
+    <div class="leftRight">
+    <form action="{%url 'addBooks' %}" method="POST">
+        {%csrf_token%}
+        
+        <div class="right">
+        <h2>Add a favorite Book</h2>
+        <table>
+            <tr>
+                <td>{{userBooks.title}}</td>
+            </tr>
+            <tr>
+                <td>Added by: {{userBooks.uploaded_by.first_name}} {{userBooks.uploaded_by.last_name}}</td>
+            </tr>
+            <tr>
+                <td>Added on: {{userBooks.uploaded_by.created_at}}</td>
+            </tr>
+            <tr>
+                <td>Last updated on: {{userBooks.uploaded_by.updated_date}}</td>
+            </tr>
+            <tr>
+                <td>Description </td>
+                <td>{{userBooks.desc}}</td>
+            </tr>
+        </table>
+    
+
+    </div>
+    </form>
+
+    <div class="left">
+        <h1>Users Who Like This Book:</h1>
+        <ul>
+            {%for user in userBooks.user.all%}
+            <li>{{user.first_name}}</li>
+            {%endfor%}
+        </ul>
+
+        {% if user in userBooks.user.all %}
+                    <h6>.</h6>
+                {% else %}
+                    <a href="{% url 'AddToFavorite' userBooks.id %}">Add to Favorites</a>
+                {% endif %}
+
+        
+            </div>
+
+    </div>
+</body>
+</html>

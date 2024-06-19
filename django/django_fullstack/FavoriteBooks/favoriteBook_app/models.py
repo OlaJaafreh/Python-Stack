@@ -17,6 +17,14 @@ class UsersManager(models.Manager):
         if  postData['password'] != postData['Confirmpassword']:
             errors["Confirmpassword"] = "password didnt match"
         return errors
+    
+
+class BooksManager(models.Manager):
+    def basic_validator(self, postData):
+        errors = {}
+        if len(postData['desc']) <= 5 :
+            errors["desc"] = "Description should be at least 5 characters"
+        return errors
 
 class Users(models.Model):
     first_name = models.CharField(max_length=45)
@@ -27,22 +35,11 @@ class Users(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
     objects = UsersManager()
 
-
-class BooksManager(models.Manager):
-    def basic_validator(self, postData):
-        errors = {}
-        if len(postData['title']) == 0 :
-            errors["title"] = "Title is required"
-        if len(postData['description']) <= 5:
-            errors["description"] = "Description must be at least 5 characters"
-        return errors
-    
-
 class Books(models.Model):
     title = models.CharField(max_length=255)
     desc = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(Users,related_name='books',on_delete=models.CASCADE)
-    favorite = models.ManyToManyField(Users,related_name='favorite')
+    user = models.ManyToManyField(Users,related_name='favorites')
+    uploaded_by = models.ForeignKey(Users,related_name='books_uploaded',on_delete=models.CASCADE)
     objects = BooksManager()

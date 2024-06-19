@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Books</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style1.css' %}">
+</head>
+<body>
+
+    <div class="header">
+        <h1>Welcome, {{user.first_name}}</h1>
+        <a href="{%url 'loginPage'%}">Logout</a>
+        
+    </div>
+    <a href="{%url 'books'%}">Main Page</a>
+    <form action="{%url 'EdituserBook' userBooks.id%}" method="POST">
+        {%csrf_token%}
+
+        <div class="leftRight">
+        <div class="right">
+        <h2>Add a favorite Book</h2>
+        <table>
+            <tr>
+                <td><input type="text" name="titleEdit" value="{{userBooks.title}}"></td>
+            </tr>
+            <tr>
+                <td>Added by: {{user.first_name}} {{user.last_name}}</td>
+            </tr>
+            <tr>
+                <td>Added on: {{user.created_at}}</td>
+            </tr>
+            <tr>
+                <td>Last updated on: {{user.updated_date}}</td>
+            </tr>
+            <tr>
+                <td>Description </td>
+                <td><textarea name="descEdit" id="">{{userBooks.desc}}</textarea></td>
+            </tr>
+            <tr>
+                <!-- <td></td> -->
+                <td colspan="2">    
+                    <div class="updateDel">
+                    <button>Update</button>
+                    <a href="{%url 'DeleteuserBook' userBooks.id %}">Delete</a>
+                </div>
+            </td>
+            </tr>
+        </table>
+
+</div>
+    </form>
+
+    <div class="left">
+        <h1>Users Who Like This Book:</h1>
+        <ul>
+            {%for userF in userBooks.user.all%}
+            <li>{{userF.first_name}}</li>
+
+            
+{% if user in userBooks.user.all %}
+            {% if user.id == userF.id %}
+                    
+                    <a href="{% url 'RemoveFromFavorite' userBooks.id %}">Un-Favorites</a>
+                {% else %}
+                <h6></h6>
+                {% endif %}
+
+                {% endif %}
+
+
+            {%endfor%}
+
+            {% if user in userBooks.user.all %}
+            <h6>.</h6>
+        {% else %}
+            <a href="{% url 'AddToFavorite' userBooks.id %}">Add to Favorites</a>
+        {% endif %}
+        </ul>
+    </div>
+</div>
+</body>
+</html>

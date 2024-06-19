@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Books</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style1.css' %}">
+</head>
+<body>
+    <div class="header">
+        <h1>Welcome, {{user.first_name}}</h1>
+        <a href="{%url 'loginPage'%}">Logout</a>
+        
+    </div>
+<form action="{%url 'addBooks' %}" method="POST">
+    {%csrf_token%}
+
+    <div class="leftRight">
+    <div class="right">
+
+        
+    <h2>Add a favorite Book</h2>
+    <table>
+        <tr>
+            <td>Title </td>
+            <td><input type="text" name="title" required></td>
+        </tr>
+        <tr>
+            <td>Description </td>
+            <td><textarea name="desc" id=""></textarea></td>
+        </tr>
+    </tr>
+    {% if messages %}
+    <tr>
+        <td></td>
+        <td>{% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        </td>
+    </tr>
+    {% endif %}
+    <tr>
+    </table>
+
+    <button>Add</button>
+</div>
+</form>
+<div class="left">
+    <h2>All Books</h2>
+
+    <table>
+        {% for book in userBooks %}
+        <tr>
+            <td>
+                <a href="{% url 'confirmBook' book.id %}">{{ book.title }}</a>
+                <br>
+                <h4>(added by {{ book.uploaded_by.first_name }} {{ book.uploaded_by.last_name }})</h4>
+                <h4>{{ book.desc }}</h4>
+                {% if user in book.user.all %}
+                    <h6>This book is one of your favorites.</h6>
+                {% else %}
+                    <a class="addFav" href="{% url 'AddToFavorite' book.id %}">Add to Favorites</a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+
+    
+</div>
+</div>
+</body>
+</html>

@@ -18,5 +18,6 @@ from django.contrib import admin
 from django.urls import path,include
 
 urlpatterns = [
-    path('',include('favorite.urls') ),
+    path('admin/', admin.site.urls),
+    path('',include('favoriteBook_app.urls')),
 ]
